@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+:root {
+  --left-bg-color: rgba(87, 84, 236, 0.5);
+  --right-bg-color: rgba(43, 43, 43, 0.7);
+  --left-btn-hover-color: rgba(20, 20, 244, 1);
+  --right-btn-hover-color: rgba(34, 343, 34, 1);
+  --hover-width: 75%;
+  --other-width: 25%;
+  --speed: 1000ms;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Roboto;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+h1 {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  color: white;
+  font-size: 4rem;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+/* styling buy now button  */
+a {
+  position: absolute;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-decoration: solid;
+  color: white;
+  border: white solid 0.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 15rem;
+  padding: 1.5rem;
+}
+.split-left .btn:hover {
+  background-color: var(--left-btn-hover-color);
+  border-color: var(--left-btn-hover-color);
+}
+.split-right .btn:hover {
+  background-color: var(--right-btn-hover-color);
+  border-color: var(--right-btn-hover-color);
+}
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+}
+.split-left {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  background-image: url("https://cdn.vox-cdn.com/thumbor/F2oRwppvdiPVyzdJLYwMKOmXczo=/0x0:1200x678/920x0/filters:focal(0x0:1200x678):format(webp):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/20030749/image.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.split-left::before {
+  content: "";
+  position: absolute;
+  background-color: var(--left-bg-color);
+  width: 100%;
+  height: 100%;
+}
+
+.split-right {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  right: 0;
+  overflow: hidden;
+  background-image: url("https://www.extremetech.com/wp-content/uploads/2019/12/680535-microsoft-xbox-series-x-640x360.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.split-right::before {
+  content: "";
+  position: absolute;
+  background-color: var(--right-bg-color);
+  width: 100%;
+  height: 100%;
+}
+/* making transition smooth */
+.split-left,
+.split-right,
+.split-left::before,
+.split-right::before {
+  transition: all var(--speed) ease-in-out;
+}
+
+.hover-left .split-left {
+  width: var(--hover-width);
+}
+.hover-left .split-right {
+  width: var(--other-width);
+}
+.hover-right .split-right {
+  width: var(--hover-width);
+}
+.hover-right .split-left {
+  width: var(--other-width);
+}
+
+/* making our h1 mobile responsive */
+@media (max-width: 800px) {
+  h1 {
+    font-size: 2rem;
+    top: 30%;
+  }
+  .btn {
+    padding: 1rem;
+    width: 12rem;
+  }
+}
